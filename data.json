@@ -1,0 +1,55 @@
+{
+    "cv": [
+        {
+            "name": "Primary School",
+            "description": "Silberbergschule Geesthacht <br> 2008-2012",
+            "page": "/cv",
+            "time": "2008-2012"
+        },
+        {
+            "name": "Secondary School",
+            "description": "Otto-Hahn-Gymnasium <br> 2012-2020",
+            "page": "/cv",
+            "time": "2012-2020"
+        },
+        {
+            "name": "B.S in Computer Science and Economics",
+            "description": "2020 I started my study at the NORDAKADEMIE in Elmshorn in cooperation with the OTTO GmbH <br> 2020-Present",
+            "page": "/cv",
+            "time": "2020-Present"
+        }
+    ],
+
+    "page": [
+        {
+            "name": "Main Page",
+            "description": "This is the main page where you probably started from",
+            "page": "/"
+        },
+        {
+            "name": "Blog Page",
+            "description": "This is my personal blog where you can find articles mostly about tech-related topics",
+            "page": "/blog"
+        },
+        {
+            "name": "Podcast Page",
+            "description": "Did you know that I have a podcast? Here you can listen to the newest episodes.",
+            "page": "/podcast"
+        },
+        {
+            "name": "CV Page",
+            "description": "This is my CV, so you can see all the steps in my life",
+            "page": "/cv"
+        },
+        {
+            "name": "Contact Page",
+            "description": "This is the contact page where you can find contact information or even the possiblity to send me messages directly.",
+            "page": "/contact"
+        },
+        {
+            "name": "Imprint Page",
+            "description": "Pretty boring but here is the imprint",
+            "page": "/imprint"
+        }
+    ]
+}

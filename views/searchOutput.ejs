@@ -1,0 +1,50 @@
+<% if (topHit !== undefined) { %>
+    <h3>Top Hit</h3>
+
+    <div onclick="openPage('<%= topHit.item.page %>')" class="searchItem searchTopHit selected">
+        <p><%= topHit.item.name %></p>
+    
+        <p class="searchDescription"><%- topHit.item.description %></p>
+    </div>
+<% } %>
+<% if (blogSearch.length > 0) { %>
+    <h3>Blog</h3>
+    <% blogSearch.forEach(function(item, index) { %>
+        <div class="searchItem">
+            <p onclick="openPage('<%= item.item.page %>')"><%= item.item.heading %></p>
+        </div>
+    <% });  %> 
+<% } %>
+<% if (pageSearch.length > 0) { %>
+    <h3>Pages</h3>
+    <% pageSearch.forEach(function(item, index) { %>
+        <div class="searchItem">
+            <p onclick="openPage('<%= item.item.page %>')"><%= item.item.name %></p>
+        </div>
+    <% });  %> 
+<% } %>
+<% if (cvSearch.length > 0) { %>
+    <h3>CV</h3>
+    <% cvSearch.forEach(function(item, index) { %>
+        <div class="searchItem">
+            <p onclick="openPage('<%= item.item.page %>')"><%= item.item.name %></p>
+        </div>
+    <% });  %> 
+<% } %>
+
+<% if (podcastSearch.length > 0) { %>
+    <h3>Podcast</h3>
+    <% podcastSearch.forEach(function(item, index) { %>
+        <div class="searchItem">
+            <p onclick="openPage('<%= item.item.page %>')"><%= item.item.name %></p>
+        </div>
+    <% });  %> 
+<% } %>
+
+<% if (topHit == undefined) { %>
+    
+    <div class="searchNoResult">
+        <p>Sorry, but your search has no results</p>
+    
+    </div>
+<% } %>
