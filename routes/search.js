@@ -1,3 +1,4 @@
+const { Console } = require('console');
 const fs = require('fs');
 let Fuse = require('fuse.js');
 const request = require('request');
@@ -71,29 +72,60 @@ function loadData() {
 
 loadData();
 
+function isNumeric(str) {
+    if (typeof str != "string") return false // we only process strings!  
+    return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
+           !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
+  }
+
+function getTopHit(searchTerm) {
+    let inputArray = []
+    let topHitSearch = new Fuse(data.all, fuseOptions).search(searchTerm);
+    if (topHitSearch != 0) {
+        inputArray.push(topHitSearch[0].item);
+    }
+    return inputArray;
+}
+
+console.log(getTopHit('tsv fdv'))
 
 
 app.get('/search/:search', (req, res) => {
     let searchTerm = req.params.search;
-    console.log(searchTerm)
+    var topHit = [];
+    let inCV = [];
+    if (isNumeric(searchTerm)) {
+        let date = parseInt(searchTerm);
+        for (let i = 0; i < data.cv.length; i++) {
+            if (data.cv[i].begin <= date && data.cv[i].end >= date) {
+                inCV.push(data.cv[i])
+            }
+        }
+
+        if (inCV.length == 0) {
+            topHit = getTopHit(searchTerm)
+        }
+    } else { 
+        topHit = getTopHit(searchTerm)
+    }
     const cvSearch = new Fuse(data.cv, fuseOptions).search(searchTerm);
     const blogSearch = new Fuse(data.blog, fuseOptions).search(searchTerm);
     const pageSearch = new Fuse(data.page, fuseOptions).search(searchTerm);
     const podcastSearch = new Fuse(data.podcast, fuseOptions).search(searchTerm);
 
-    const topHit = new Fuse(data.all, fuseOptions).search(searchTerm);
-
-    // console.log(topHit[0]);
+    let emptySearch = (topHit.length == 0 && inCV.length == 0) ? true : false;
+    
 
     let resultData = {
         cvSearch: cvSearch, 
         blogSearch: blogSearch, 
         topHit: topHit[0],
+        inCV: inCV,
         pageSearch: pageSearch,
-        podcastSearch: podcastSearch
+        podcastSearch: podcastSearch,
+        searchTerm: searchTerm,
+        emptySearch: emptySearch
     }
 
-    console.log(resultData)
     res.render('searchOutput', resultData)
-    // res.send(`<div id="output" style="padding: 0px 20px 20px;"><h3>Pages</h3><div class="searchItem"><p onmousedown="openPage('/blog')">blog</p></div><h3>CV</h3><div class="searchItem"><p onmousedown="openPage('')">beispiel3</p></div></div>`)
 })

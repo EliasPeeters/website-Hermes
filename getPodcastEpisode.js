@@ -60,7 +60,7 @@ app.get('/podcast', (req, res) => {
             )
         });
         // console.log(html2json(body).child)
-
+        console.log('now')
         
         data.podcast = podcast;
 

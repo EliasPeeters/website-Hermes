@@ -4,20 +4,73 @@
             "name": "Primary School",
             "description": "Silberbergschule Geesthacht <br> 2008-2012",
             "page": "/cv",
-            "time": "2008-2012"
+            "time": "2008-2012",
+            "begin": 2008,
+            "end": 2012
         },
         {
             "name": "Secondary School",
             "description": "Otto-Hahn-Gymnasium <br> 2012-2020",
             "page": "/cv",
-            "time": "2012-2020"
+            "time": "2012-2020",
+            "begin": 2012,
+            "end": 2020
         },
         {
             "name": "B.S in Computer Science and Economics",
             "description": "2020 I started my study at the NORDAKADEMIE in Elmshorn in cooperation with the OTTO GmbH <br> 2020-Present",
             "page": "/cv",
-            "time": "2020-Present"
+            "time": "2020-Present",
+            "begin": 2020
+        },
+        {
+            "name": "Internship: Vegansnacks.de",
+            "description": "I supported the onlineshop vegansnacks.de for 2 weeks and learned a lot about the ecommerce.",
+            "page": "/cv",
+            "time": "2018 (2 weeks)",
+            "begin": 2020,
+            "end": 2020
+        },
+        {
+            "name": "Business informatics: OTTO GmbH",
+            "description": "I started my study business informatics in cooperation with OTTO 2020.",
+            "page": "/cv",
+            "time": "2020-Present",
+            "begin": 2020
+        },
+        {
+            "name": "Enrichment: NXT-G Programming",
+            "description": "",
+            "page": "/cv",
+            "time": "2013-2014",
+            "begin": 2013,
+            "end": 2014
+        },
+        {
+            "name": "HAW Summercamp: Faszination Luft- und Raumfahrt",
+            "description": "",
+            "page": "/cv",
+            "time": "2017",
+            "begin": 2017,
+            "end": 2017
+        },
+        {
+            "name": "Table Tennis D-License",
+            "description": "",
+            "page": "/cv",
+            "time": "2018",
+            "begin": 2018,
+            "end": 2018
+        },
+        {
+            "name": "Table Tennis C-License",
+            "description": "",
+            "page": "/cv",
+            "time": "2019",
+            "begin": 2019,
+            "end": 2019
         }
+
     ],
 
     "page": [

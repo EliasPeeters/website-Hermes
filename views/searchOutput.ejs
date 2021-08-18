@@ -1,12 +1,25 @@
-<% if (topHit !== undefined) { %>
+<% if (topHit != undefined) { %>
     <h3>Top Hit</h3>
 
-    <div onclick="openPage('<%= topHit.item.page %>')" class="searchItem searchTopHit selected">
-        <p><%= topHit.item.name %></p>
+    <div onclick="openPage('<%= topHit.page %>')" class="searchItem searchTopHit selected">
+        <p><%= topHit.name %></p>
     
-        <p class="searchDescription"><%- topHit.item.description %></p>
+        <p class="searchDescription"><%- topHit.description %></p>
     </div>
 <% } %>
+
+<% if (inCV.length != 0) { %>
+    <h3>in the year <%= searchTerm %> I did</h3>
+
+    <% inCV.forEach(function(item, index) { %>
+        <div onclick="openPage('<%= item.page %>')" class="searchItem searchTopHit selected">
+            <p><%= item.name %></p>
+        
+            <p class="searchDescription"><%- item.description %></p>
+        </div>
+    <% });  %> 
+<% } %>
+
 <% if (blogSearch.length > 0) { %>
     <h3>Blog</h3>
     <% blogSearch.forEach(function(item, index) { %>
@@ -41,7 +54,7 @@
     <% });  %> 
 <% } %>
 
-<% if (topHit == undefined) { %>
+<% if (emptySearch) { %>
     
     <div class="searchNoResult">
         <p>Sorry, but your search has no results</p>
