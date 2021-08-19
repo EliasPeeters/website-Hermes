@@ -1,7 +1,7 @@
 <% if (topHit != undefined) { %>
     <h3>Top Hit</h3>
 
-    <div onclick="openPage('<%= topHit.page %>')" class="searchItem searchTopHit selected">
+    <div onclick="openPage('<%= topHit.page %>')" page="<%= topHit.page %>" class="searchItem searchTopHit selected">
         <p><%= topHit.name %></p>
     
         <p class="searchDescription"><%- topHit.description %></p>
