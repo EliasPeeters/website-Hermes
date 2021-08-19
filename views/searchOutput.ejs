@@ -12,7 +12,7 @@
     <h3>in the year <%= searchTerm %> I did</h3>
 
     <% inCV.forEach(function(item, index) { %>
-        <div onclick="openPage('<%= item.page %>')" class="searchItem searchTopHit selected">
+        <div onclick="openPage('<%= item.page %>')" page="<%= item.page %>" class="searchItem searchTopHit selected">
             <p><%= item.name %></p>
         
             <p class="searchDescription"><%- item.description %></p>
@@ -61,3 +61,5 @@
     
     </div>
 <% } %>
+
+<div class="mobileWrapper"></div>
