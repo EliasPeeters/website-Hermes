@@ -28,8 +28,8 @@
             "description": "I supported the onlineshop vegansnacks.de for 2 weeks and learned a lot about the ecommerce.",
             "page": "/cv",
             "time": "2018 (2 weeks)",
-            "begin": 2020,
-            "end": 2020
+            "begin": 2018,
+            "end": 2018
         },
         {
             "name": "Business informatics: OTTO GmbH",
@@ -103,6 +103,11 @@
             "name": "Imprint Page",
             "description": "Pretty boring but here is the imprint",
             "page": "/imprint"
+        },
+        {
+            "name": "Papers",
+            "description": "Al my scientific works collected in one place",
+            "page": "/papers"
         }
     ]
 }

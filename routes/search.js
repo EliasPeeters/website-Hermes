@@ -5,7 +5,8 @@ const request = require('request');
 const getPodcastEpisode = require('../getPodcastEpisode');
 
 let hades = 'https://hades.eliaspeeters.de';
-let zeus = 'https://eliaspeeters.de'
+let zeus = 'https://eliaspeeters.de';
+let ares = 'http://ares.eliaspeeters.de';
 
 const fuseOptions = {
     // isCaseSensitive: false,
@@ -53,8 +54,31 @@ function getHades() {
     });
 }
 
+function getAres() {
+    request(`${ares}/attributes`, (err, res, body) => {
+        
+        let bodyJSON = JSON.parse(body);
+        let keys = Object.keys(bodyJSON);
+        papers = []
+        keys.forEach(function(item) {
+            papers.push({
+                page: `/onepaper?name=${bodyJSON[item].name}`,
+                name: bodyJSON[item].heading,
+                type: 'paper',
+                description: bodyJSON[item].description
+            })
+        });
+        
+        data.paper = papers;
+
+        papers.forEach(function(item) {
+            data.all.push(item)
+        });
+    });
+}
 
 function loadData() {
+
     // add cv to all
     data.cv.forEach(function(item) {
         data.all.push(item)
@@ -66,7 +90,7 @@ function loadData() {
     })
 
     getHades();
-
+    getAres();
 
 }
 
@@ -108,10 +132,20 @@ app.get('/search/:search', (req, res) => {
     } else { 
         topHit = getTopHit(searchTerm)
     }
+
     const cvSearch = new Fuse(data.cv, fuseOptions).search(searchTerm);
     const blogSearch = new Fuse(data.blog, fuseOptions).search(searchTerm);
+    const paperSearch = new Fuse(data.paper, fuseOptions).search(searchTerm);
     const pageSearch = new Fuse(data.page, fuseOptions).search(searchTerm);
     const podcastSearch = new Fuse(data.podcast, fuseOptions).search(searchTerm);
+
+    const search = [
+        {name: 'CV', data: cvSearch},
+        {name: 'Blog', data: blogSearch},
+        {name: 'Paper', data: paperSearch},
+        {name: 'Pages', data: pageSearch},
+        {name: 'Podcast', data: podcastSearch}
+    ]
 
     let emptySearch = (topHit.length == 0 && inCV.length == 0) ? true : false;
     
@@ -124,8 +158,11 @@ app.get('/search/:search', (req, res) => {
         pageSearch: pageSearch,
         podcastSearch: podcastSearch,
         searchTerm: searchTerm,
+        paperSearch: paperSearch,
+        search,
         emptySearch: emptySearch
     }
+    console.log(paperSearch)
 
     res.render('searchOutput', resultData)
 })

@@ -20,39 +20,16 @@
     <% });  %> 
 <% } %>
 
-<% if (blogSearch.length > 0) { %>
-    <h3>Blog</h3>
-    <% blogSearch.forEach(function(item, index) { %>
-        <div class="searchItem">
-            <p onclick="openPage('<%= item.item.page %>')"><%= item.item.heading %></p>
-        </div>
-    <% });  %> 
-<% } %>
-<% if (pageSearch.length > 0) { %>
-    <h3>Pages</h3>
-    <% pageSearch.forEach(function(item, index) { %>
-        <div class="searchItem">
-            <p onclick="openPage('<%= item.item.page %>')"><%= item.item.name %></p>
-        </div>
-    <% });  %> 
-<% } %>
-<% if (cvSearch.length > 0) { %>
-    <h3>CV</h3>
-    <% cvSearch.forEach(function(item, index) { %>
-        <div class="searchItem">
-            <p onclick="openPage('<%= item.item.page %>')"><%= item.item.name %></p>
-        </div>
-    <% });  %> 
-<% } %>
-
-<% if (podcastSearch.length > 0) { %>
-    <h3>Podcast</h3>
-    <% podcastSearch.forEach(function(item, index) { %>
-        <div class="searchItem">
-            <p onclick="openPage('<%= item.item.page %>')"><%= item.item.name %></p>
-        </div>
-    <% });  %> 
-<% } %>
+<% search.forEach(function(item) { %>
+    <% if (item.data.length > 0) { %>
+        <h3><%= item.name %></h3>
+        <% item.data.forEach(function(item, index) { %>
+            <div class="searchItem">
+                <p onclick="openPage('<%= item.item.page %>')"><%= item.item.name %></p>
+            </div>
+        <% });  %> 
+    <% } %>
+<%  }); %>
 
 <% if (emptySearch) { %>
     
