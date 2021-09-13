@@ -166,3 +166,5 @@ app.get('/search/:search', (req, res) => {
 
     res.render('searchOutput', resultData)
 })
+
+module.exports = {data}

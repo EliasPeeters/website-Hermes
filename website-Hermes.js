@@ -10,6 +10,7 @@ app.set('view engine', 'ejs');
 
 let statusRoute = require('./routes/status');
 let searchRoute = require('./routes/search');
+let suggestionRoute = require('./routes/suggestion');
 
 let getPodcastEpisodes = require('./getPodcastEpisode')
 
