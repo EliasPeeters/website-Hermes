@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-local": "node website-Hermes.js"
+    "start-local": "node website-Hermes.js",
+    "start-live": "git reset --hard; git pull; npm i; forever restart website-Hermes.js"
   },
   "repository": {
     "type": "git",
