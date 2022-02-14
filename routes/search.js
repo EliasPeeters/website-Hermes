@@ -43,7 +43,7 @@ function getHades() {
     request(`${hades}/attributes`, (err, res, body) => {
         let bodyJSON = JSON.parse(body).articles;
         bodyJSON.forEach(function(item) {
-            item.page = `/article?name=${item.name}`
+            item.page = `/blog/${item.name}`
             item.name = item.heading;
             item.type = 'blog'
         });
