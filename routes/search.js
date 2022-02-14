@@ -62,7 +62,7 @@ function getAres() {
         papers = []
         keys.forEach(function(item) {
             papers.push({
-                page: `/onepaper?name=${bodyJSON[item].name}`,
+                page: `/papers/${bodyJSON[item].name}`,
                 name: bodyJSON[item].heading,
                 type: 'paper',
                 description: bodyJSON[item].description
